@@ -1,0 +1,4 @@
+cohort	n	max_probability_difference	label_disagreements	intentional_label_changes_from_legacy_argmax
+BIONIKK	75	2.22044604925031e-16	0	1
+JAVELIN	354	2.77555756156289e-16	0	10
+CheckMate	110	3.33066907387547e-16	0	1

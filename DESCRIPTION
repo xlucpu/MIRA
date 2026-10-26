@@ -1,0 +1,16 @@
+Package: MIRA
+Type: Package
+Title: Frozen Two-Step Classification of Renal Cell Carcinoma Expression Profiles
+Version: 0.1.0
+Authors@R: person("Xiaofan", "Lu", email = "xlu.cpu@foxmail.com", role = c("aut", "cre"))
+Description: Applies a frozen two-step classifier based on major histocompatibility
+    complex class II and B-lineage gene expression ranks. The package includes
+    fixed numeric model parameters, a full expression rank background, synthetic
+    examples and prediction functions. Calibration uses a complete unlabeled
+    target study or assay batch. The classifier is intended for research use.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Depends: R (>= 4.2.0)
+Imports: stats, utils
+URL: https://github.com/xlucpu/MIRA
+BugReports: https://github.com/xlucpu/MIRA/issues

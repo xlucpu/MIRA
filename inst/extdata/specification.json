@@ -1,0 +1,34 @@
+{
+  "name": "MIRA final two-step research classifier",
+  "version": "2026-10-26.1",
+  "alpha": 0.5,
+  "lambda": 0.003,
+  "first_step": {
+    "target": "C1 versus C2",
+    "genes": ["HLA-DQA1", "HLA-DRA", "HLA-DRB5", "HLA-DMA", "HLA-DQB1", "HLA-DPA1", "HLA-DRB1", "HLA-DPB1"],
+    "input": "Eight separate within-sample percentile ranks",
+    "rule": "P(C1)<0.5 assigns C2; otherwise proceed to step 2"
+  },
+  "second_step": {
+    "target": "C1a versus C1b",
+    "genes": ["BANK1", "CD19", "CD22", "CD79A", "CR2", "FCRL2", "MS4A1", "PAX5"],
+    "input": "Arithmetic mean of the eight within-sample gene percentile ranks",
+    "rule": "P(C1a|C1)>=0.5 assigns C1a; otherwise C1b"
+  },
+  "rank_background": 18686,
+  "rank": "(rank(expression, ties.method=\"average\") - 0.5) / 18686",
+  "unlabeled_batch_calibration": "Entire eligible study/assay batch, no label/outcome selection; sample SD; SD<1e-10 replaced by 1; n>=2 is computational only.",
+  "fitted_training_transformations": "Separate frozen means and SDs for each component after target batch calibration",
+  "missing_input": "Reject missing background genes, duplicated IDs, nonfinite required values, absent batches and singleton batches; no implicit imputation or gene mapping.",
+  "additional_genes": "Ignored when outside the frozen background",
+  "single_sample": "Not validated; rejected without a multi-sample batch",
+  "model_training": {
+    "n": 539,
+    "n_original_C1": 248,
+    "cohorts": ["BIONIKK", "JAVELIN", "CheckMate"]
+  },
+  "model_source_sha256": "ad26c2c0442a612c8cdc28c920268b0356fbaaee5a7969375acd75b860ff4169",
+  "implementation": "Numeric coefficient export; no refitting, optimization or target-label access. Generated prediction source uses base R only.",
+  "evaluation": "Retrospective leave-one-cohort-out agreement with original cohort-specific labels; distinct from the pooled deployment model.",
+  "not_included": "Patient-level expression, patient IDs, training labels, original fitted objects and training fit calls"
+}
